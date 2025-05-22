@@ -1,17 +1,18 @@
 ### NAME: Kowshik P
 ### REG NO: 24900055
-### EXP NO 7: IMPLEMENTATION OF SYNCHRONOUS UP COUNTER USING VERILOG HDL CODE
+### SYNCHRONOUS-UP-COUNTER
 
-### **AIM:**
+**AIM:**
 
 To implement 4 bit synchronous up counter and validate functionality.
 
-### **SOFTWARE REQUIRED:**
+**SOFTWARE REQUIRED:**
 
 Quartus prime
 
-### **THEORY:**
-### **4 BIT SYNCHRONOUS UP COUNTER:**
+**THEORY**
+
+**4 bit synchronous UP Counter**
 
 If we enable each J-K flip-flop to toggle based on whether or not all preceding flip-flop outputs (Q) are “high,” we can obtain the same counting sequence as the asynchronous circuit without the ripple effect, since each flip-flop in this circuit will be clocked at exactly the same time:
 
@@ -27,7 +28,8 @@ Since the first (LSB) flip-flop needs to toggle at every clock pulse, its J and 
 The next flip-flop need only “recognize” that the first flip-flop’s Q output is high to be made ready to toggle, so no AND gate is needed.
 However, the remaining flip-flops should be made ready to toggle only when all lower-order output bits are “high,” thus the need for AND gates.
 
-### **PROCEDURE:**
+**Procedure**
+
 1.Initialize the shift register to a known state (e.g., all zeros).
 
 2.Input a bit serially into the shift register.
@@ -39,19 +41,40 @@ However, the remaining flip-flops should be made ready to toggle only when all l
 5.Repeat steps 2-4 for each bit you want to input and shift.
 
 
-### **PROGRAM:**
-![Screenshot 2024-12-31 203742](https://github.com/user-attachments/assets/17e6e95c-f071-4821-bc22-bc339ce2356c)
+**PROGRAM**
+
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+*/
+
+```
+module de11(out,clk,rstn);
+input clk,rstn;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(!rstn)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
+```
+
+**RTL LOGIC UP COUNTER**
+
+![image](https://github.com/user-attachments/assets/b96bf9b9-c0e7-4fc7-ad0b-840115a40ad2)
 
 
-### **RTL LOGIC UP COUNTER:**
-![Screenshot 2024-12-31 203729](https://github.com/user-attachments/assets/ce85f576-7c57-408e-8f2e-33194d4282db)
+**TIMING DIAGRAM FOR IP COUNTER**
+
+![image](https://github.com/user-attachments/assets/7ab80f98-34c8-4863-87fd-e11b53bf5e55)
 
 
-### **TIMING DIAGRAM FOR IP COUNTER:**
-![UP COUNTER](https://github.com/user-attachments/assets/2a95ca7c-536c-412b-9e6d-41e2abb4718b)
+**TRUTH TABLE**
 
-### **TRUTH TABLE:**
-![UP COunter tt](https://github.com/user-attachments/assets/a9330d87-ae05-42c7-a635-a7f49c91101a)
+![image](https://github.com/user-attachments/assets/a8d31b38-e999-46b3-9597-4845d232f05c)
 
-### **RESULTS:**
-THE IMPLEMENTATION OF SYNCHRONOUS-UP-COUNTER IS TESTED AND VERIFIED.
+
+**RESULTS**
+
+Thus implemented a 4 bit synchronous up counter and validated its functionality.
